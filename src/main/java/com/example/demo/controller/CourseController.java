@@ -50,14 +50,15 @@ public class CourseController {
         return new ResponseEntity(findedCourse, HttpStatus.OK);
     }
 
-    @PostMapping("/two-sum")
+    @GetMapping("/two-sum")
     public ResponseEntity twoSum(
             @RequestBody @RequestParam("target") Integer target,
-            @RequestBody @RequestParam("numbers") String nums) {
+            @RequestBody @RequestParam("numbers") ArrayList<Integer> numbers) {
         try {
-            List<String> numbers = new ArrayList<>(Arrays.asList(nums.split(",")));
-            HashMap<Integer, Integer> map = new HashMap<>();
             List<Integer> result = new ArrayList<>();
+
+            HashMap<Integer, Integer> map = new HashMap<>();
+
             for (int i = 0; i < numbers.size(); i++) {
                 int num = Integer.valueOf(numbers.get(i));
                 if (map.get(num) != null) {
